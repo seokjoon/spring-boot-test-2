@@ -36,9 +36,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - '8607:27017'
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: $DB_USERNAME
-      MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: $DB_USERNAME
+#      MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
     networks:
       sb:
         ipv4_address: 172.40.0.7
