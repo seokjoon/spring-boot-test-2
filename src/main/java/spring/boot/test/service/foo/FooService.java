@@ -1,9 +1,9 @@
-package spring.boot.test.springboottest2.service.foo;
+package spring.boot.test.service.foo;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
-import spring.boot.test.springboottest2.event.foo.FooEvent;
+import spring.boot.test.event.foo.FooEvent;
 
 @Service
 @RequiredArgsConstructor

@@ -1,4 +1,4 @@
-package spring.boot.test.springboottest2.event.foo;
+package spring.boot.test.event.foo;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;

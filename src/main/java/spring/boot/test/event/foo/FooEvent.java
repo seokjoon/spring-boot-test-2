@@ -1,4 +1,4 @@
-package spring.boot.test.springboottest2.event.foo;
+package spring.boot.test.event.foo;
 
 public class FooEvent {
 
