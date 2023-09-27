@@ -39,3 +39,4 @@ out/
 
 ########
 spring-shell.log
+/logs/
