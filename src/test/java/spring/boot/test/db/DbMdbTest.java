@@ -18,8 +18,7 @@ public class DbMdbTest {
     private MongoTemplate mongoTemplate;
 
     @Test
-    public void foo() {
-
+    public void exec() {
         DBObject object = BasicDBObjectBuilder.start().add("foo", "bar").get();
         mongoTemplate.save(object, "collection");
         assertThat(mongoTemplate.findAll(DBObject.class, "collection")).extracting("foo").containsOnly("bar");

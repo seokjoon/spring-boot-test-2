@@ -27,9 +27,10 @@ public class FooRun {
 
     private void fooValid() {
         Foo foo = new Foo();
-        //foo.foo = 1;
-        foo.foo = 2;
-        log.info("fooValid.foo: " + foo.foo);
+        //foo.num = 1;
+        foo.num = 2;
+//        Foo foo = new Foo(2, "foo");
+        log.info("fooValid.num: " + foo.num);
         Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
         Set<ConstraintViolation<Foo>> violations = validator.validate(foo);
         violations.forEach(fooValidConstraintViolation -> log.error("fooValidConstraintViolation: [{}]", fooValidConstraintViolation));

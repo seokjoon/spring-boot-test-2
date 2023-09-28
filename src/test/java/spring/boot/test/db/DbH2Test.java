@@ -14,7 +14,7 @@ public class DbH2Test {
     private DataSource dataSource;
 
     @Test
-    public void foo() throws SQLException {
+    public void exec() throws SQLException {
         assertThat(dataSource.getClass().getName()).isEqualTo("com.zaxxer.hikari.HikariDataSource");
         assertThat(dataSource.getConnection().getMetaData().getDatabaseProductName()).isEqualTo("H2");
     }

@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
@@ -17,7 +16,7 @@ public class DbMysqlTest {
     private DataSource dataSource;
 
     @Test
-    public void foo() throws SQLException {
+    public void exec() throws SQLException {
         ResultSet rs = null;
         int noOfFoo = 0;
         try(PreparedStatement preparedStatement = dataSource.getConnection().prepareStatement("SELECT COUNT(1) FROM foo")) {
