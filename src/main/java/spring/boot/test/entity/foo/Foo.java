@@ -2,13 +2,17 @@ package spring.boot.test.entity.foo;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import lombok.Builder;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Table(name = "foo")
 public class Foo {
 
     @Id
-//    @Column(name = "id")
+    @Column(updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
@@ -16,11 +20,12 @@ public class Foo {
     @Min(value = 2, message = "num minimum 2")
     public int num = 30;
 
-//    @Column(name = "title")
+    @Column(nullable = false)
     public String title = "default title";
 
-//    public Foo(int num, String title) {
-//        this.num = num;
-//        this.title = title;
-//    }
+    @Builder
+    public Foo(int num, String title) {
+        this.num = num;
+        this.title = title;
+    }
 }

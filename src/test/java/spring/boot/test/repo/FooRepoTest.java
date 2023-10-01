@@ -18,9 +18,7 @@ public class FooRepoTest {
     @Test
     public void exec() {
         System.out.println("exec");
-        Foo foo = new Foo();
-        foo.title = "foo title";
-        foo.num = 20;
+        Foo foo =  Foo.builder().num(20).title("foo title").build();
         Foo savedFoo = fooRepo.save(foo);
 //        assertThat(fooRepo.findById(savedFoo.id).get()).isEqualTo(foo);
         assertThat(fooRepo.findById(savedFoo.id).orElse(null)).isNotNull();
