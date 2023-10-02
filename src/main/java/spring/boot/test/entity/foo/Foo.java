@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import spring.boot.test.req.foo.FooReq;
 
 import java.time.LocalDateTime;
 
@@ -27,7 +28,7 @@ public class Foo {
     @Min(value = 2, message = "num minimum 2")
     public int num = 30;
 
-    @Column(nullable = false)
+    @Column(length = 128, nullable = false)
     public String title = "default title";
 
     @LastModifiedDate
@@ -40,8 +41,8 @@ public class Foo {
         this.title = title;
     }
 
-    public void update(int num, String title) {
-        this.num = num;
-        this.title = title;
+    public void update(FooReq fooReq) {
+        this.num = fooReq.getNum();
+        this.title = fooReq.getTitle();
     }
 }

@@ -50,8 +50,9 @@ public class FooService {
 
     @Transactional
     public Foo update(long id, FooReq fooReq) {
+        //JPA는 별도의 수정 메소드 없이 객체를 조회해서 값을 변경하면 트랜잭션 커밋시 반영
         Foo foo = fooRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("not found: " + id));
-        foo.update(fooReq.getNum(), fooReq.getTitle());
+        foo.update(fooReq);
         return foo;
     }
 }
