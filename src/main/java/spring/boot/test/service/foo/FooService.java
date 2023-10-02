@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import spring.boot.test.req.foo.FooReq;
 import spring.boot.test.entity.foo.Foo;
 import spring.boot.test.event.foo.FooEvent;
@@ -25,8 +26,12 @@ public class FooService {
 //        log.info("foo pub");
 //    }
 
-    public Foo create(FooReq fooData) {
-        return fooRepo.save(fooData.toEntity());
+    public Foo create(FooReq fooReq) {
+        return fooRepo.save(fooReq.toEntity());
+    }
+
+    public void delete(long id) {
+        fooRepo.deleteById(id);
     }
 
     //test
@@ -41,5 +46,12 @@ public class FooService {
 
     public Iterable<Foo> reads() {
         return fooRepo.findAll();
+    }
+
+    @Transactional
+    public Foo update(long id, FooReq fooReq) {
+        Foo foo = fooRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+        foo.update(fooReq.getNum(), fooReq.getTitle());
+        return foo;
     }
 }

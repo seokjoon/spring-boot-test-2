@@ -28,4 +28,9 @@ public class Foo {
         this.num = num;
         this.title = title;
     }
+
+    public void update(int num, String title) {
+        this.num = num;
+        this.title = title;
+    }
 }

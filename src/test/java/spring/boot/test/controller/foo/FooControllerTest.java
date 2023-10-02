@@ -59,6 +59,13 @@ class FooControllerTest {
         assertThat(foos.iterator().next().title).isEqualTo(title);
     }
 
+    @DisplayName("delete")
+    @Test
+    public void delete() throws Exception {
+        Foo foo = fooRepo.save(Foo.builder().num(80).title("title test").build());
+        mockMvc.perform(MockMvcRequestBuilders.delete("/foo/" + foo.id)).andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
     @DisplayName("read")
     @Test
     public void read() throws Exception {
@@ -75,5 +82,17 @@ class FooControllerTest {
     public void reads() throws Exception {
         final ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get("/foo").accept(MediaType.APPLICATION_JSON));
         resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @DisplayName("update")
+    @Test
+    public void update() throws Exception {
+        final String title = "title update test 3";
+        Foo foo = fooRepo.findAll().iterator().next();
+        FooReq fooReq = new FooReq(35, title);
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.put("/foo/" + foo.id).contentType(MediaType.APPLICATION_JSON_VALUE).content(objectMapper.writeValueAsString(fooReq)));
+        resultActions.andExpect(MockMvcResultMatchers.status().isOk());
+        Foo fooUpdated = fooRepo.findAllByTitle(foo.title).iterator().next();
+        assertThat(fooUpdated.title).isEqualTo(foo.title);
     }
 }

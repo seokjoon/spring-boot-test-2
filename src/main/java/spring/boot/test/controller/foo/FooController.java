@@ -21,9 +21,15 @@ public class FooController {
     FooService fooService;
 
     @PostMapping("/foo")
-    public ResponseEntity<Foo> create(@RequestBody FooReq fooData) {
-        Foo foo = fooService.create(fooData);
+    public ResponseEntity<Foo> create(@RequestBody FooReq fooReq) {
+        Foo foo = fooService.create(fooReq);
         return ResponseEntity.status(HttpStatus.CREATED).body(foo);
+    }
+
+    @DeleteMapping("/foo/{id}")
+    public ResponseEntity<Void> delete(@PathVariable long id) {
+        fooService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/foo/{id}")
@@ -39,5 +45,11 @@ public class FooController {
         List<FooRes> fs = new ArrayList<FooRes>();
         foos.forEach(foo -> { fs.add(new FooRes(foo)); });
         return ResponseEntity.ok().body(fs);
+    }
+
+    @PutMapping("/foo/{id}")
+    public ResponseEntity<Foo> update(@PathVariable long id, @RequestBody FooReq fooReq) {
+        Foo foo = fooService.update(id, fooReq);
+        return ResponseEntity.ok().body(foo);
     }
 }
