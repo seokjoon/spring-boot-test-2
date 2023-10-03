@@ -44,6 +44,7 @@ public class FooService {
         return fooRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("not found: " + id));
     }
 
+    //TODO: Page, Pageable
     public Iterable<Foo> reads() {
         return fooRepo.findAll();
     }

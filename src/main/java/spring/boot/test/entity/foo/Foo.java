@@ -12,6 +12,9 @@ import spring.boot.test.req.foo.FooReq;
 import java.time.LocalDateTime;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Foo.findAllByNumNQ", query = "select f from Foo f where f.num=?1"),
+})
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Table(name = "foo")
 public class Foo {
@@ -40,6 +43,14 @@ public class Foo {
         this.num = num;
         this.title = title;
     }
+
+//    @PostLoad
+//    @PrePersist
+//    @PreUpdate
+//    @PreRemove
+//    @PostPersist
+//    @PostUpdate
+//    @PostRemove
 
     public void update(FooReq fooReq) {
         this.num = fooReq.getNum();
