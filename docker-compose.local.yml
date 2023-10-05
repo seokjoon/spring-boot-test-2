@@ -44,20 +44,20 @@ services:
         ipv4_address: 172.40.0.7
 
 
-  sb:
-    container_name: sb
-    image: sp-boot/test:1
-    restart: unless-stopped
-    depends_on:
-      - sb-mysql57
-      - sb-mdb
-    ports:
-      - '8602:8500'
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-    networks:
-      sb:
-        ipv4_address: 172.40.0.2
+#  sb:
+#    container_name: sb
+#    image: sp-boot/test:1
+#    restart: unless-stopped
+#    depends_on:
+#      - sb-mysql57
+#      - sb-mdb
+#    ports:
+#      - '8602:8500'
+#    volumes:
+#      - /etc/localtime:/etc/localtime:ro
+#    networks:
+#      sb:
+#        ipv4_address: 172.40.0.2
 
 
 networks:
